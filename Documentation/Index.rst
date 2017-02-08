@@ -5,6 +5,7 @@
 TYPO3 Snippets
 ==============
 
+:Rendered: |today|
 
 .. toctree::
    :hidden:
