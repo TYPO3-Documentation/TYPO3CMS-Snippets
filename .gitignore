@@ -1,0 +1,15 @@
+*~
+*.bak
+*.idea
+*.project
+*.swp
+.buildpath
+.cache
+.project
+.session
+.settings
+.TemporaryItems
+.webprj
+nbproject
+*NOT_VERSIONED*
+/Documentation/_make
