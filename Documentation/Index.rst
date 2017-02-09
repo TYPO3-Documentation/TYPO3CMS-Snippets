@@ -36,8 +36,8 @@ Please contribute
 The Snippets
 ============
 
+.. rst-class:: compactlist
 .. toctree::
-   :titlesonly:
 
    Index of Tags   <https://docs.typo3.org/typo3cms/Snippets/genindex.html>
    Sitemap
