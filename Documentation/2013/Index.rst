@@ -70,10 +70,10 @@ Code:
 
 .. index:: pagebrowser, pager, pagination
 .. _s2013-21:
-.. _s2013-21-pagebrowser-for-content-elemtents:
+.. _s2013-21-pagebrowser-for-content-elements:
 
-2013-21 pagebrowser for content-elemtents
-=========================================
+2013-21 pagebrowser for content-elements
+========================================
 
 by **Michael Stein**, 2013-10-15 16:13:21, old #465, typoscript
 
