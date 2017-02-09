@@ -26,8 +26,8 @@ Please contribute
 #. Don't worry: The documentation team will help you with the details of
    text markup.
 
-#. In general: While it's nice to have a similar structure for the snippets,
-   this is not a requirement any more. So you may have several descriptions
+#. In general: While it's nice to have a similar structure for the snippets
+   this is not a requirement any more. So you may have *several* descriptions
    and code passages in your contribution.
 
 #. You have collected a whole bunch of snippets and would like to have them
