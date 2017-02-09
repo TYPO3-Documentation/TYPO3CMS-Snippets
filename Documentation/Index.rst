@@ -37,7 +37,7 @@ The Snippets
 ============
 
 .. toctree::
-   :hidden:
+   :titlesonly:
 
    Index of Tags   <https://docs.typo3.org/typo3cms/Snippets/genindex.html>
    Sitemap
