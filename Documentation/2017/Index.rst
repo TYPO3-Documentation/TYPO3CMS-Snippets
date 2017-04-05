@@ -11,7 +11,7 @@
 
 
 
-.. index:: TypoScript
+.. index:: TypoScript; extract
 .. _s2017-1:
 .. _s2017-1-Extract-TypoScript-templates-from-database-and-save-as-files:
 
@@ -21,7 +21,7 @@
 by **Martin Bless**, 2017-04-05 21:15:00
 
 Keywords:
-   TypoScript
+   Extract TypoScript
 
 Task:
    You are dealing with an older TYPO3 installation that has TypoScript
