@@ -939,21 +939,29 @@ Description:
    switched to strong and em tags which do have a semantic meaning.
    Put the following in your TS Setup to convert <b> and <i> tags to <strong>
    and <em>
-
+   Read more : https://wiki.typo3.org/Faq/EM_and_STRONG
+   
 Code:
    .. code-block:: typoscript
 
-      lib.parseFunc_RTE.tags{
-        b=TEXT
-        b{
-          current=1
-          wrap= <strong>|</strong>
+      lib.parseFunc_RTE {
+
+      # rewrites the tags - but not in ul and ol...
+        nonTypoTagStdWrap.HTMLparser = 1
+        nonTypoTagStdWrap.HTMLparser {
+           tags.b.remap = strong
+           tags.i.remap = em
         }
-        i=TEXT
-        i{
-          current=1
-          wrap= <em>|</em>
+
+      # this adds the rewriting to ul and ol but now there are ps wrapped around li...
+        externalBlocks {
+           ul.callRecursive=1
+           ul.callRecursive.tagStdWrap.HTMLparser = 1
+           ol.callRecursive=1
+           ol.callRecursive.tagStdWrap.HTMLparser = 1
         }
+      # no more ps araound li...
+        nonTypoTagStdWrap.encapsLines.encapsTagList = div,p,pre,h1,h2,h3,h4,h5,h6,li
       }
 
 
