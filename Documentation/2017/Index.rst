@@ -39,6 +39,37 @@ Credits:
 
 
 
+by **Riccardo De Contardi**, 2017-04-05 21:15:00
+
+Keywords:
+   Fluid, Inline Syntax, Extbase
+
+Problem:
+   When dealing with the inline fluid syntax, a common mistake is to translate a viewhelper that contains an attribute that accepts 
+   a string value like:
+
+.. code-block:: xml
+    <my:viewhelper string="{string}" />
+
+into:
+     
+.. code-block:: xml
+   {my:viewhelper(string:'{string}')}
+   
+This must be avoided as it uselessly wraps the value in a TextNode and could even lead to errors
+
+Solution:
+  Avoid the syntax with the single quotes and curly brackets and simply write:  
+
+.. code-block:: xml
+    {my:viewhelper(string:string)}
+
+References:
+   https://vimeo.com/167666466    
+   https://forge.typo3.org/issues/79694
+
+Credits:
+   Claus Due.
 
 
 .. index:: abc, bcd, cde
