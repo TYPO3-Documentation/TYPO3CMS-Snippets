@@ -39,44 +39,63 @@ Credits:
 
 
 
-by **Riccardo De Contardi**, 2017-04-05 21:15:00
+
+.. index:: Fluid, inline-syntax, Extbase, viewhelper
+.. _s2017-2:
+.. _s2017-2-Fluid-inline-syntax:
+
+2017-2 Fluid inline syntax: How to pass arguments to viewhelpers
+================================================================
+
+by **Riccardo De Contardi**, 2017-05-12 10:07:00
+
+.. highlight:: xml
 
 Keywords:
-   Fluid, Inline Syntax, Extbase
+   Fluid, inline-syntax, Extbase, viewhelper
 
 Problem:
-   When dealing with the inline fluid syntax, a common mistake is to translate a viewhelper that contains an attribute that accepts 
-   a string value like:
+   People tend to translate viewhelper calls badly to inline form.
 
-.. code-block:: xml
-    <my:viewhelper string="{string}" />
+   Consider this example::
 
-into:
-     
-.. code-block:: xml
-   {my:viewhelper(string:'{string}')}
-   
-This must be avoided as it uselessly wraps the value in a TextNode and could even lead to errors
+      <my:viewhelper string="{myVar}" />
 
-Solution:
-  Avoid the syntax with the single quotes and curly brackets and simply write:  
+Bad:
+   Very often you can find this translated like so::
 
-.. code-block:: xml
-    {my:viewhelper(string:string)}
+      {my:viewhelper(string: '{myVar}')}
+
+   What's wrong with this? While this *may* work it creates
+   an extra, superfluous TextNode around the variable accessor.
+   And it can easily lead to warnings and errors.
+
+Good:
+   The *clean and correct solution* is to avoid the single quotes
+   that create the TextNode. The curly braces are then dropped as well::
+
+      {my:viewhelper(string: myVar)}
+
+   Pretty easy and well readable!
 
 References:
-   https://vimeo.com/167666466    
-   https://forge.typo3.org/issues/79694
+   - `Claus Due <https://vimeo.com/user20720051>`__ has created a
+     `Vimeo video <https://vimeo.com/167666466>`__ about this with
+     an in-depth explanation. Thank you very much!
+
+   - The problem is for example being discussed in :issue:`79694`.
 
 Credits:
-   Claus Due.
+   `Claus Due <https://vimeo.com/user20720051>`__
+
+.. highlight:: php
 
 
 .. index:: abc, bcd, cde
-.. _s2017-2:
-.. _s2017-2-The-Title:
+.. _s2017-3:
+.. _s2017-3-The-Title:
 
-2017-2 ... ((template for the next snippet))
+2017-3 ... ((template for the next snippet))
 ===================================================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
