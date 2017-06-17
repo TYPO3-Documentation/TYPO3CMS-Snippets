@@ -88,14 +88,76 @@ References:
 Credits:
    `Claus Due <https://vimeo.com/user20720051>`__
 
+
+.. index:: image, FAL, TCA
+.. _s2017-3:
+.. _s2017-3-Custom-FAL-inline-overlay-palette-in-BE:
+
+2017-3 Custom FAL inline overlay palette in BE
+==============================================
+
+by Joerg Kummer, 2017-05-15 13:30:00
+
+.. highlight:: php
+
+Keywords:
+   image, FAL, TCA
+
+Description:
+   Add custom FAL overlay palettes, to get custom configuration on any FAL related TCA fields. 
+
+Custom palette:
+   Add your custom definition of palette to existing sys_file_reference palettes (default: basicoverlayPalette, imageoverlayPalette, audioOverlayPalette, videoOverlayPalette).
+   *my_sitepackage/Configuration/TCA/Overrides/sys_file_reference.php*::
+
+      <?php
+      if (!defined('TYPO3_MODE')) die ('Access denied.');
+      
+      $GLOBALS['TCA']['sys_file_reference']['palettes']['imageOverlayPaletteWithoutLink'] = array(
+          'showitem' => '
+                  title,alternative,--linebreak--,
+                  description,--linebreak--,crop'
+      );
+
+Apply pallete:
+   Use *columnsOverrides* to apply custom palette to any existing FAL related TCA field, for example, tt_content.image
+   *my_sitepackage/Configuration/TCA/Overrides/tt_content.php*::
+
+      <?php
+      if (!defined('TYPO3_MODE')) die ('Access denied.');
+      
+      $GLOBALS['TCA']['tt_content']['types']['image']['columnsOverrides']['image']['config']['foreign_types'] = array(
+          '0' => array(
+              'showitem' => '
+                  --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageOverlayPaletteWithoutLink,
+                  --palette--;;filePalette'
+          ),
+          '1' => array(
+              'showitem' => '
+                  --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageOverlayPaletteWithoutLink,
+                  --palette--;;filePalette'
+          ),
+          '2' => array(
+              'showitem' => '
+                  --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageOverlayPaletteWithoutLink,
+                  --palette--;;filePalette'
+          ),
+          '5' => array(
+              'showitem' => '
+                  --palette--;LLL:EXT:lang/locallang_tca.xlf:sys_file_reference.imageoverlayPalette;imageOverlayPaletteWithoutLink,
+                  --palette--;;filePalette'
+          )
+      );
+   *foreign_types* 3 & 4 are for audio and video file types
+
 .. highlight:: php
 
 
 .. index:: abc, bcd, cde
-.. _s2017-3:
-.. _s2017-3-The-Title:
+.. _s2017-4:
+.. _s2017-4-The-Title:
 
-2017-3 ... ((template for the next snippet))
+2017-4 ... ((template for the next snippet))
 ===================================================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
