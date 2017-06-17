@@ -51,7 +51,7 @@ Description:
    If you need more than 4 columns or you need specific names for the columns
    according to your design, you can do it with the following snippet.
    Place this code in the extTables.php, ensure you included this script in
-   your localconf.php with following line:
+   your LocalConfiguration.php with following line:
    $typo\_db\_extTableDef\_script = 'extTables.php';
 
 Code:
