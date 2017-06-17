@@ -141,7 +141,7 @@ Code:
       }
 
 
-.. index:: localconf.php, extTables.php, typo_db_extTableDef_script, TCA, fields, standard, advanced, pages
+.. index:: LocalConfiguration.php, extTables.php, typo_db_extTableDef_script, TCA, fields, standard, advanced, pages
 .. _s2008-71:
 .. _s2008-71-Fields-keyword-and-description-should-be-shown-on-an-standard-Page:
 
@@ -151,30 +151,28 @@ Code:
 by **Martin Holtz**, 2008-09-04 16:14:18, old #72, php
 
 Keywords:
-   localconf.php, extTables.php, typo\_db\_extTableDef\_script, TCA, fields,
+   LocalConfiguration.php, extTables.php, typo\_db\_extTableDef\_script, TCA, fields,
    standard, advanced, pages
 
 Description:
-   In TYPO3 4.2. the page "Advanced" has been removed.
+   The page type "Advanced" no longer is available in current versions of TYPO3.
+   However, you can add the fields you need into the Standard Page-View.
 
-   You do not need to use it in TYPO3 < 4.2 because you can add the fields you
-   need into the Standard Page-View.
-
-   Simple change via ext\_Tables.php the TCA for Page "Standard" and hide Page
+   Simply change the TCA for Page "Standard" via extTables.php and hide Page type
    "Advanced" for Non-Admins.
 
 Code:
    .. code-block:: php
 
-      In your localconf.php you need a line:
+      In your LocalConfiguration.php you need a line:
       $typo_db_extTableDef_script = 'extTables.php';
 
-      Than you can use extTables.php to overwrite TCA Settings (and more;)
+      Then you can use extTables.php to overwrite TCA Settings (and more).
 
       extTables.php :
 
 
-      $TCA['pages']['types']['1']['showitem'] = 'hidden;;;;1-1T-1, doktype;;2;button, title;;3;;2-2-2, subtitle, nav_hide,  --div--, keywords, description, Sconfig;;6;nowrap;5-5-5, storage_pid;;7, l18n_cfg, tx_rlmptmplselector_main_tmpl;;;;1-1-1, tx_rlmptmplselector_ca_tmpl, tx_mcgooglesitemap_priority;;;;1-1-1, tx_mcgooglesitemap_changefreq, tx_cssselect_stylesheets;;;;1-1-1';
+      $GLOBALS['TCA']['pages']['types']['1']['showitem'] = 'hidden;;;;1-1T-1, doktype;;2;button, title;;3;;2-2-2, subtitle, nav_hide,  --div--, keywords, description, Sconfig;;6;nowrap;5-5-5, storage_pid;;7, l18n_cfg, tx_rlmptmplselector_main_tmpl;;;;1-1-1, tx_rlmptmplselector_ca_tmpl, tx_mcgooglesitemap_priority;;;;1-1-1, tx_mcgooglesitemap_changefreq, tx_cssselect_stylesheets;;;;1-1-1';
 
       # "--div--, keywords, description" has been added to page "standard".
 
