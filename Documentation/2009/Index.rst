@@ -922,7 +922,7 @@ Code:
    .. code-block:: php
 
       // Userfunction Start. (Put this in
-      // fileadmin/example_userfunc.inc)
+      // fileadmin/example_userfunc.php)
       <?php
 
       function user_mycheck() {
@@ -936,8 +936,8 @@ Code:
       // Userfunction End
 
       Put
-      require_once('fileadmin/example_userfunc.inc');
-      in your localconf.php
+      require_once('fileadmin/example_userfunc.php');
+      in your AdditionalConfiguration.php
 
 
       // Typoscript Setup start
