@@ -150,39 +150,60 @@ Apply pallete:
       );
    *foreign_types* 3 & 4 are for audio and video file types
 
-2017-4 Simple Debug in PHP Code
-===================================================================
+
+.. index:: debugging, Extbase
+.. _s2017-4:
+.. _s2017-4-Using-the-TYPO3-API-for-debugging:
+
+2017-4 Using the TYPO3 API for debugging
+========================================
 
 by **Franz Kugelmann**, 2017-06-19 09:21:00
 
 Keywords:
-   debug
+   debugging, Extbase
 
 .. highlight:: php
 
 Task:
-   You want to debug a variable in TYPO3 PHP-Code.
+   You want to nicely display the contents of a PHP variable at
+   runtime when using the TYPO3 API..
 
 Solution:
-   Use the TYPO3 API for a nice output.
+   Make use of the class :php:`DebugUtility`.
+
+   **DebugUtility::debug()**
    
-   - Main debug function, working nicely in BE and FE
-   
+   The :php:`DebugUtility::debug()` function works nicely in
+   the frontend and backend. Example::
+
+      // ((good example should be added here))
       \TYPO3\CMS\Core\Utility\DebugUtility::debug($yourVariable);  
    
-   - A var_dump function optimized for Extbase's object structures  
+   **DebugUtility::var_dump()**
+
+   The DebugUtility::var_dump() function is specifically optimized 
+   to reveal Extbase's object structures. Example::
    
-      \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($yourVariable, [checkForHelpfulAdditionalParameters])
+      // ((good example should be added here))
+      \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($yourVariable,
+         [checkForHelpfulAdditionalParameters])
 
 References:
-   - https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_core_1_1_utility_1_1_debug_utility.html
-   - https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_extbase_1_1_utility_1_1_debugger_utility.html
+   - Look for the `DebugUtility Class Reference
+     <https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_core_1_1_utility_1_1_debug_utility.html>`__
+     that is part of the core.
+   - Look for the `DebuggerUtility Class Reference
+     <https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_extbase_1_1_utility_1_1_debugger_utility.html>`__.
 
-.. index:: debug, Extbase
 
+
+.. index:: abc, bcd, cde
+.. _s2017-5:
+.. _s2017-5-The-Title:
 
 2017-5 ... ((template for the next snippet))
-===================================================================
+============================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
 
@@ -206,6 +227,3 @@ so:
 on:
    ...
 
-.. index:: abc, bcd, cde
-.. _s2017-4:
-.. _s2017-4-The-Title:
