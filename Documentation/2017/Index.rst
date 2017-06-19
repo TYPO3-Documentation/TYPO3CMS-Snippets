@@ -150,20 +150,67 @@ Apply pallete:
       );
    *foreign_types* 3 & 4 are for audio and video file types
 
+
+.. index:: debugging, Extbase
+.. _s2017-4:
+.. _s2017-4-Using-the-TYPO3-API-for-debugging:
+
+2017-4 Using the TYPO3 API for debugging
+========================================
+
+by **Franz Kugelmann**, 2017-06-19 09:21:00
+
+Keywords:
+   debugging, Extbase
+
 .. highlight:: php
+
+Task:
+   You want to nicely display the contents of a PHP variable at
+   runtime when using the TYPO3 API..
+
+Solution:
+   Make use of the class :php:`DebugUtility`.
+
+   **DebugUtility::debug()**
+   
+   The :php:`DebugUtility::debug()` function works nicely in
+   the frontend and backend. Example::
+
+      // ((good example should be added here))
+      \TYPO3\CMS\Core\Utility\DebugUtility::debug($yourVariable);  
+   
+   **DebugUtility::var_dump()**
+
+   The DebugUtility::var_dump() function is specifically optimized 
+   to reveal Extbase's object structures. Example::
+   
+      // ((good example should be added here))
+      \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($yourVariable,
+         [checkForHelpfulAdditionalParameters])
+
+References:
+   - Look for the `DebugUtility Class Reference
+     <https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_core_1_1_utility_1_1_debug_utility.html>`__
+     that is part of the core.
+   - Look for the `DebuggerUtility Class Reference
+     <https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_extbase_1_1_utility_1_1_debugger_utility.html>`__.
+
 
 
 .. index:: abc, bcd, cde
-.. _s2017-4:
-.. _s2017-4-The-Title:
+.. _s2017-5:
+.. _s2017-5-The-Title:
 
-2017-4 ... ((template for the next snippet))
-===================================================================
+2017-5 ... ((template for the next snippet))
+============================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
 
 Keywords:
    abc, bcd, cde
+
+.. highlight:: php
 
 Abc:
    ...
@@ -179,3 +226,4 @@ so:
 
 on:
    ...
+
