@@ -150,20 +150,46 @@ Apply pallete:
       );
    *foreign_types* 3 & 4 are for audio and video file types
 
+2017-4 Simple Debug in PHP Code
+===================================================================
+
+by **Franz Kugelmann**, 2017-06-19 09:21:00
+
+Keywords:
+   debug
+
 .. highlight:: php
 
+Task:
+   You want to debug a variable in TYPO3 PHP-Code.
 
-.. index:: abc, bcd, cde
-.. _s2017-4:
-.. _s2017-4-The-Title:
+Solution:
+   Use the TYPO3 API for a nice output.
+   
+   - Main debug function, working nicely in BE and FE
+   
+      \TYPO3\CMS\Core\Utility\DebugUtility::debug($yourVariable);  
+   
+   - A var_dump function optimized for Extbase's object structures  
+   
+      \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($yourVariable, [checkForHelpfulAdditionalParameters])
 
-2017-4 ... ((template for the next snippet))
+References:
+   - https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_core_1_1_utility_1_1_debug_utility.html
+   - https://api.typo3.org/typo3cms/current/html/class_t_y_p_o3_1_1_c_m_s_1_1_extbase_1_1_utility_1_1_debugger_utility.html
+
+.. index:: debug, Extbase
+
+
+2017-5 ... ((template for the next snippet))
 ===================================================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
 
 Keywords:
    abc, bcd, cde
+
+.. highlight:: php
 
 Abc:
    ...
@@ -179,3 +205,7 @@ so:
 
 on:
    ...
+
+.. index:: abc, bcd, cde
+.. _s2017-4:
+.. _s2017-4-The-Title:
