@@ -119,7 +119,7 @@ Custom palette:
                   description,--linebreak--,crop'
       );
 
-Apply pallete:
+Apply palette:
    Use *columnsOverrides* to apply custom palette to any existing FAL related TCA field, for example, tt_content.image
    *my_sitepackage/Configuration/TCA/Overrides/tt_content.php*::
 
