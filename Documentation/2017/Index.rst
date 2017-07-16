@@ -198,7 +198,7 @@ References:
 
 
 
-.. index:: Register hook, TypoScriptHook class, Constants and setup, References
+.. index:: Register hook, TypoScriptHook class, Constants and setup, Hint, References
 .. _s2017-5:
 .. _s2017-5-The-Title:
 
@@ -295,6 +295,9 @@ Constants and setup:
       ...
 
    For other 3rd party extensions have a look at its */Configuration/TypoScript/* folder where constants.txt and setup.txt files could exists. Be aware of some extensions uses files which ends with .ts or others (depends on TYPO3 version compatibility).
+
+Hint:
+   In TYPO3 CMS 8.7.3 inclusion of typoscript fails from extensions which includes typoscript via *\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript()*. For such extensions you need to add the content directly in your own typoscript (constants/setup).
 
 References:
    Feature 79140 `Add hook to add custom typoscript templates
