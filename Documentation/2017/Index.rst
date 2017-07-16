@@ -294,9 +294,7 @@ Constants and setup:
       // Adaption for 3rd party extensions
       ...
 
-   For other 3rd party extensions have a look at its */Configuration/TypoScript/* folder where constants.txt and setup.txt files could exists.
-
-This only works, if there is no enabled typoscript template entry in root page, as normaly does.
+   For other 3rd party extensions have a look at its */Configuration/TypoScript/* folder where constants.txt and setup.txt files could exists. Be aware of some extensions uses files which ends with .ts or others (depends on TYPO3 version compatibility).
 
 References:
    Feature 79140 `Add hook to add custom typoscript templates
