@@ -198,11 +198,116 @@ References:
 
 
 
-.. index:: abc, bcd, cde
+.. index:: Register hook, TypoScriptHook class, Constants and setup, References
 .. _s2017-5:
 .. _s2017-5-The-Title:
 
-2017-5 ... ((template for the next snippet))
+2017-5 Using file as typoscript root template
+=============================================
+
+by **Jörg Kummer**, 2017-07-16 20:00:00
+
+Keywords:
+   TypoScript, Root template
+
+.. highlight:: php
+
+Since TYPO3 CMS 8.6 a new hook in TemplateService allows to add or modify existing TypoScript templates.
+This way you can create a root template for your site, without any entry in database table *sys_template* with following additionals for your customize/sitepackage extension. Inspired by a talk from Jigal Hemert at T3DD17 *New little gems in TYPO3 v8*
+
+This way, you have all typoscript configuration as file(s) in your sitepackage and not in database, which is best for version control.
+
+Register hook:
+  Add a hook registration to your sitepackage extension configuration
+  *mysitepackage/Classes/Hooks/ext_localconf.php*::
+
+    // Add default Typoscript
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['Core/TypoScript/TemplateService']['runThroughTemplatesPostProcessing'][] =
+      \Vendor\Mysitepackage\Hooks\TypoScriptHook::class . '->addCustomTypoScriptTemplate';
+
+TypoScriptHook class:
+  Add a hook class to your sitepackage extension classes to add custom typoscript template.
+  *mysitepackage/Classes/Hooks/TypoScriptHook.php*::
+
+      <?php
+      namespace Vendor\Mysitepackage\Hooks;
+
+      /**
+       * Class TypoScriptHook
+       *
+       * @package TYPO3
+       * @subpackage tx_mysitepackage
+       */
+      class TypoScriptHook
+      {
+
+         /**
+          * Hook into the default TypoScript to add custom typoscript template
+          *
+          * @param array $parameters
+          * @param \TYPO3\CMS\Core\TypoScript\TemplateService $parentObject
+          * @return void
+          */
+         public function addCustomTypoScriptTemplate($parameters, $parentObject)
+         {
+            // Add a custom "fake" sys_template record, if no template was found in rootline
+            if ($parentObject->outermostRootlineIndexWithTemplate === 0) {
+               $row = [
+                  'uid' => 'mysitepackage',
+                  'constants' => '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:mysitepackage/Configuration/TypoScript/constants.txt">' . LF,
+                  'config' => '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:mysitepackage/Configuration/TypoScript/setup.txt">' . LF,
+                  'root' => 1,
+                  'clear' => 3,
+                  'nextlevel' => 0,
+                  'static_file_mode' => 1,
+                  'title' => 'Root template',
+               ];
+               $parentObject->processTemplate($row, 'sys_' . $row['uid'], $parameters['absoluteRootLine'][0]['uid'], 'sys_' . $row['uid']);
+               $parentObject->rootId = $parameters['absoluteRootLine'][0]['uid'];
+               $parentObject->rootLine[] = $parameters['absoluteRootLine'][0];
+            }
+         }
+      }
+
+Constants and setup:
+   Add typoscript constants as usual to your sitepackage extension configuration
+   *mysitepackage/Configuration/TypoScript/constants.txt*::
+      example_text = This is a page example text
+
+   Add typoscript config/setup as usual to your sitepackage extension configuration
+   *mysitepackage/Configuration/TypoScript/setup.txt*::
+      page = PAGE
+      page.10 = TEXT
+      page.10.data = {$example_text}
+
+   To add static typoscript templates from 3rd party extensions, fx. fluid_styled_content use constants
+   *mysitepackage/Configuration/TypoScript/constants.txt*::
+      // 3rd party extensions
+      <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/constants.txt">
+      // Adaption for 3rd party extensions
+      ...
+
+   and setup
+   *mysitepackage/Configuration/TypoScript/setup.txt*::
+      // 3rd party extensions
+      <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/setup.txt">
+      // Adaption for 3rd party extensions
+      ...
+
+   For other 3rd party extensions have a look at its */Configuration/TypoScript/* folder where constants.txt and setup.txt files could exists.
+
+This only works, if there is no enabled typoscript template entry in root page, as normaly does.
+
+References:
+   Feature 79140 `Add hook to add custom typoscript templates
+   <https://docs.typo3.org/typo3cms/extensions/core/Changelog/8.6/Feature-79140-AddHookToAddCustomTypoScriptTemplates.html>`__
+
+
+.. index:: abc, bcd, cde
+.. _s2017-6:
+.. _s2017-6-The-Title:
+
+2017-6 ... ((template for the next snippet))
 ============================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
@@ -226,4 +331,5 @@ so:
 
 on:
    ...
+
 
