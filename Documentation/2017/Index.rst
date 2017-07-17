@@ -327,11 +327,10 @@ doesn't exist any more. Add the TypoScript of other extensions directly
 to your TypoScript files instead.
 
 References:
+   - :issue:`79140`
 
-- :issue:`79140`
-
-- Changelog: `Add hook to add custom typoscript templates
-  <https://docs.typo3.org/typo3cms/extensions/core/Changelog/8.6/Feature-79140-AddHookToAddCustomTypoScriptTemplates.html>`__
+   - Changelog: `Add hook to add custom typoscript templates
+     <https://docs.typo3.org/typo3cms/extensions/core/Changelog/8.6/Feature-79140-AddHookToAddCustomTypoScriptTemplates.html>`__
 
 
 
