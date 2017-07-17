@@ -321,9 +321,9 @@ like :file:`fluid_styled_content` use includes::
 or whatever.
 
 *Related hint:*
-Added TypoScript from 3rd party extensions using
+Adding TypoScript from 3rd party extensions using
 :php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript()`
-doesn't works. In such case add the TypoScript of other extensions directly
+doesn't work. In such case add the TypoScript of other extensions directly
 to your TypoScript files instead.
 
 Tips
