@@ -326,6 +326,10 @@ Since TYPO3 CMS 8.7.3 class
 doesn't exist any more. Add the TypoScript of other extensions directly
 to your TypoScript files instead.
 
+Tips
+   - The technique is used in the `TYPO3 extension 'bolt' <https://github.com/CMSExperts/bolt>`__
+     which is used in production.
+
 References:
    - :issue:`79140`
 
