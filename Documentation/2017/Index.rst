@@ -104,7 +104,7 @@ Keywords:
    image, FAL, TCA
 
 Description:
-   Add custom FAL overlay palettes, to get custom configuration on any FAL related TCA fields. 
+   Add custom FAL overlay palettes, to get custom configuration on any FAL related TCA fields.
 
 Custom palette:
    Add your custom definition of palette to existing sys_file_reference palettes (default: basicoverlayPalette, imageoverlayPalette, audioOverlayPalette, videoOverlayPalette).
@@ -112,7 +112,7 @@ Custom palette:
 
       <?php
       if (!defined('TYPO3_MODE')) die ('Access denied.');
-      
+
       $GLOBALS['TCA']['sys_file_reference']['palettes']['imageOverlayPaletteWithoutLink'] = array(
           'showitem' => '
                   title,alternative,--linebreak--,
@@ -125,7 +125,7 @@ Apply palette:
 
       <?php
       if (!defined('TYPO3_MODE')) die ('Access denied.');
-      
+
       $GLOBALS['TCA']['tt_content']['types']['image']['columnsOverrides']['image']['config']['foreign_types'] = array(
           '0' => array(
               'showitem' => '
@@ -173,18 +173,18 @@ Solution:
    Make use of the class :php:`DebugUtility`.
 
    **DebugUtility::debug()**
-   
+
    The :php:`DebugUtility::debug()` function works nicely in
    the frontend and backend. Example::
 
       // ((good example should be added here))
-      \TYPO3\CMS\Core\Utility\DebugUtility::debug($yourVariable);  
-   
+      \TYPO3\CMS\Core\Utility\DebugUtility::debug($yourVariable);
+
    **DebugUtility::var_dump()**
 
-   The DebugUtility::var_dump() function is specifically optimized 
+   The DebugUtility::var_dump() function is specifically optimized
    to reveal Extbase's object structures. Example::
-   
+
       // ((good example should be added here))
       \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($yourVariable,
          [checkForHelpfulAdditionalParameters])
@@ -198,11 +198,148 @@ References:
 
 
 
-.. index:: abc, bcd, cde
+.. index:: TypoScript; without_DB
 .. _s2017-5:
-.. _s2017-5-The-Title:
+.. _s2017-5-Root-TypoScript-without-database:
 
-2017-5 ... ((template for the next snippet))
+2017-5 Root TypoScript without database
+=======================================
+
+by **Jörg Kummer**, 2017-07-16 20:00:00
+
+Keywords:
+   TypoScript, without_DB
+
+.. highlight:: php
+
+Since TYPO3 CMS 8.6 there's a new hook in :php:`TemplateService` that allows to
+add or modify TypoScript templates. This means that you can create even the
+root TypoScript template of your site programmatically. Not a single database
+record is needed. That way *all* TypoScript can be stored in files
+which is perfect for version control.
+
+The following recipe shows how to do it. It is inspired by Jigal Hemert's talk
+*New little gems in TYPO3 v8* at the T3DD17.
+
+
+Register a hook
+---------------
+Add a hook registration to your sitepackage extension configuration
+file :file:`mysitepackage/Classes/Hooks/ext_localconf.php`::
+
+   // Add default Typoscript
+   $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['Core/TypoScript/TemplateService']
+      ['runThroughTemplatesPostProcessing'][] =
+      \Vendor\Mysitepackage\Hooks\TypoScriptHook::class . '->addCustomTypoScriptTemplate';
+
+
+Provide a TypoScriptHook class
+------------------------------
+Add a hook class to your sitepackage extension classes
+to add the custom typoscript template
+:file:`mysitepackage/Classes/Hooks/TypoScriptHook.php`::
+
+   <?php
+   namespace Vendor\Mysitepackage\Hooks;
+
+   /**
+    * Class TypoScriptHook
+    *
+    * @package TYPO3
+    * @subpackage tx_mysitepackage
+    */
+   class TypoScriptHook
+   {
+
+      /**
+       * Hook into the default TypoScript to add custom typoscript template
+       *
+       * @param array $parameters
+       * @param \TYPO3\CMS\Core\TypoScript\TemplateService $parentObject
+       * @return void
+       */
+      public function addCustomTypoScriptTemplate($parameters, $parentObject)
+      {
+         // Add a custom "fake" sys_template record, if no template was found in rootline
+         if ($parentObject->outermostRootlineIndexWithTemplate === 0) {
+            $row = [
+               'uid' => 'mysitepackage',
+               'constants' => '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:mysitepackage/Configuration/TypoScript/constants.txt">' . LF,
+               'config' => '<INCLUDE_TYPOSCRIPT: source="FILE:EXT:mysitepackage/Configuration/TypoScript/setup.txt">' . LF,
+               'root' => 1,
+               'clear' => 3,
+               'nextlevel' => 0,
+               'static_file_mode' => 1,
+               'title' => 'Root template',
+            ];
+            $parentObject->processTemplate($row, 'sys_' . $row['uid'], $parameters['absoluteRootLine'][0]['uid'], 'sys_' . $row['uid']);
+            $parentObject->rootId = $parameters['absoluteRootLine'][0]['uid'];
+            $parentObject->rootLine[] = $parameters['absoluteRootLine'][0];
+         }
+      }
+   }
+
+.. highlight:: typoscript
+
+Use TypoScript Constants
+------------------------
+Add TypoScript constants as usual to your sitepackage extension configuration
+file :file:`mysitepackage/Configuration/TypoScript/constants.txt`::
+
+   example_text = This is a page example text
+
+
+Use the TypoScript Setup
+------------------------
+Add the TypoScript setup as usual to your sitepackage
+extension configuration file
+:file:`mysitepackage/Configuration/TypoScript/setup.txt`::
+
+   page = PAGE
+   page.10 = TEXT
+   page.10.data = {$example_text}
+
+
+Include other TypoScript templates
+----------------------------------
+To add static typoscript templates from 3rd party extensions
+like :file:`fluid_styled_content` use includes::
+
+   # CONSTANTS in
+   #    mysitepackage/Configuration/TypoScript/constants.txt
+   # ...
+   <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/constants.txt">
+   # ...
+
+   # SETUP code in
+   #    mysitepackage/Configuration/TypoScript/setup.txt
+   # ...
+   <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/setup.txt">
+   # ...
+
+*Note:* Extensions may use different file endings like :file:`.ts`, :file:`.t3s`, :file:`.ts.txt`
+or whatever.
+
+*Related hint:*
+Since TYPO3 CMS 8.7.3 class
+:php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript()`
+doesn't exist any more. Add the TypoScript of other extensions directly
+to your TypoScript files instead.
+
+References:
+
+- :issue:`79140`
+
+- Changelog: `Add hook to add custom typoscript templates
+  <https://docs.typo3.org/typo3cms/extensions/core/Changelog/8.6/Feature-79140-AddHookToAddCustomTypoScriptTemplates.html>`__
+
+
+
+.. index:: abc, bcd, cde
+.. _s2017-6:
+.. _s2017-6-The-Title:
+
+2017-6 ... ((template for the next snippet))
 ============================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
