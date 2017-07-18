@@ -339,11 +339,85 @@ References:
 
 
 
-.. index:: abc, bcd, cde
+.. index:: TypoScript; menu; shortcut
 .. _s2017-6:
-.. _s2017-6-The-Title:
+.. _s2017-6-TypoScript-Menu-with-active-or-current-class-for-shortcuts:
 
-2017-6 ... ((template for the next snippet))
+2017-6 TypoScript Menu with active or current class for shortcuts
+=================================================================
+
+by Loek Hilgersom, 2017-07-18 14:45:00
+
+Keywords:
+   TypoScript, Menu, TMENU, active, current, shortcut
+
+This is an improved version of https://docs.typo3.org/typo3cms/Snippets/2013/Index.html?highlight=menu%20active%20shortcut#menu-with-active-class-for-shortcuts
+
+.. highlight:: TypoScript
+
+   /****
+   * Conditions which allow Shortcut pages to show active in menu's, works for shortcuts to specific pages
+   * (shortcut_mode=0) and shortcuts to parent page (shortcut_mode=3). Options 1 and 2 (shortcut to first 
+   * child page and to random page) are nearly impossible to resolve.
+   *
+   * Example usage (ATTENTION: always use on NO-state, others make no sense!):
+   *
+   *   NO.ATagParams = class="link"
+   *   NO.ATagParams.override = class="link active"
+   *   NO.ATagParams.override.if < tmp.activeShortCutPages.if
+   */
+
+   tmp.activeShortCutPages.if {
+       // If shortcut page
+       value = 4
+       equals.field = doktype
+       // Now check different shortcut modes
+       isTrue.cObject = CASE
+       isTrue.cObject {
+           key.field = shortcut_mode
+           // Shortcut to selected page
+           0 = TEXT
+           0.value = 1
+           0.if {
+               value.data = TSFE:id
+               equals.field = shortcut
+           }
+           // Shortcut to parent page
+           3 < .0
+           3.if.equals.field = pid
+       }
+   }
+
+   lib.subMenu = HMENU
+   lib.subMenu {
+       1 = TMENU
+       1 {
+           wrap = <ul>|</ul>
+           NO = 1
+           NO {
+               wrapItemAndSub = <li class="nav-item">|</li>
+               ATagParams = class="nav-link"
+
+               // Set active class for shortcut pages
+               ATagParams {
+                   override = class="nav-link active"
+                   override.if < tmp.activeShortCutPages.if
+               }
+           }
+           CUR < .NO
+           CUR.ATagParams = class="nav-link active"
+       }
+   }
+
+
+
+
+
+.. index:: abc, bcd, cde
+.. _s2017-7:
+.. _s2017-7-The-Title:
+
+2017-7 ... ((template for the next snippet))
 ============================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
