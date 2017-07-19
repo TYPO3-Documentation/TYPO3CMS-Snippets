@@ -355,6 +355,8 @@ This is an improved version of :ref:`s2013-20`.
 
 .. highlight:: TypoScript
 
+::
+
    /****
    * Conditions which allow Shortcut pages to show active in menu's, works for shortcuts to specific pages
    * (shortcut_mode=0) and shortcuts to parent page (shortcut_mode=3). Options 1 and 2 (shortcut to first
