@@ -335,6 +335,9 @@ Code:
 
 by **Goran Medakovic**, 2013-10-07 03:12:55, old #464, typoscript
 
+See update:
+   :ref:`s2017-6`
+
 Keywords:
    MENU, TMENU, Shortcut, typoscript, typolink, doktype, active
 
