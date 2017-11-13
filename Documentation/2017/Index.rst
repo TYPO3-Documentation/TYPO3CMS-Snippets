@@ -104,11 +104,15 @@ Keywords:
    image, FAL, TCA
 
 Description:
-   Add custom FAL overlay palettes, to get custom configuration on any FAL related TCA fields.
+   Add custom FAL overlay palettes, to get custom configuration on any FAL
+   related TCA fields.
 
 Custom palette:
-   Add your custom definition of palette to existing sys_file_reference palettes (default: basicoverlayPalette, imageoverlayPalette, audioOverlayPalette, videoOverlayPalette).
-   *my_sitepackage/Configuration/TCA/Overrides/sys_file_reference.php*::
+   Add your custom definition of palette to existing sys_file_reference
+   palettes (default: basicoverlayPalette, imageoverlayPalette,
+   audioOverlayPalette, videoOverlayPalette).
+
+   :file:`my_sitepackage/Configuration/TCA/Overrides/sys_file_reference.php`::
 
       <?php
       if (!defined('TYPO3_MODE')) die ('Access denied.');
@@ -120,8 +124,11 @@ Custom palette:
       );
 
 Apply palette:
-   Use *columnsOverrides* to apply custom palette to any existing FAL related TCA field, for example, tt_content.image
-   *my_sitepackage/Configuration/TCA/Overrides/tt_content.php*::
+   Use *columnsOverrides* to apply custom palette to any existing FAL related
+   TCA field, for example, tt_content.image
+   *my_sitepackage/Configuration/TCA/Overrides/tt_content.php*.
+
+   *foreign_types* 3 & 4 are for audio and video file types::
 
       <?php
       if (!defined('TYPO3_MODE')) die ('Access denied.');
@@ -148,7 +155,7 @@ Apply palette:
                   --palette--;;filePalette'
           )
       );
-   *foreign_types* 3 & 4 are for audio and video file types
+
 
 
 .. index:: debugging, Extbase
@@ -302,8 +309,8 @@ extension configuration file
 
 Include other TypoScript templates
 ----------------------------------
-To add static typoscript templates from 3rd party extensions
-like :file:`fluid_styled_content` use includes::
+To add static typoscript templates from 3rd party extensions like
+:file:`fluid_styled_content` use includes::
 
    # CONSTANTS in
    #    mysitepackage/Configuration/TypoScript/constants.txt
@@ -317,18 +324,18 @@ like :file:`fluid_styled_content` use includes::
    <INCLUDE_TYPOSCRIPT: source="FILE:EXT:fluid_styled_content/Configuration/TypoScript/setup.txt">
    # ...
 
-*Note:* Extensions may use different file endings like :file:`.ts`, :file:`.t3s`, :file:`.ts.txt`
-or whatever.
+*Note:* Extensions may use different file endings like :file:`.ts`,
+:file:`.t3s`, :file:`.ts.txt` or whatever.
 
-*Related hint:*
-Adding TypoScript from 3rd party extensions using
-:php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript()`
-doesn't work. In such case add the TypoScript of other extensions directly
-to your TypoScript files instead.
+Related hint
+   Adding TypoScript from 3rd party extensions using
+   :php:`\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTypoScript()`
+   doesn't work. In such case add the TypoScript of other extensions directly
+   to your TypoScript files instead.
 
 Tips
-   - The technique is used in the `TYPO3 extension 'bolt' <https://github.com/CMSExperts/bolt>`__
-     which is used in production.
+   - The technique is used in the `TYPO3 extension 'bolt'
+     <https://github.com/CMSExperts/bolt>`__ which is used in production.
 
 References:
    - :issue:`79140`
@@ -410,13 +417,36 @@ This is an improved version of :ref:`s2013-20`.
       }
    }
 
+.. index:: signal; slot
+.. _s2017-7:
+.. _s2017-7-Signals-and-Slots:
+
+2017-7 Signals and Slots – Extend TYPO3 Functionality
+=====================================================
+
+by **Marcus Schwemer**, 2017-07-25
+
+Keywords:
+   Development, Extension, Tutorial
+
+.. highlight:: php
+
+About signals and slots
+   Signals and slots are a possibility within TYPO3 to extend the functionality
+   of an object. The blogpost explains the theoretical basics and shows the
+   practical details.
+
+Find the blogpost
+   https://typo3worx.eu/2017/07/signals-and-slots-in-typo3/
+
+
 
 .. index:: abc, bcd, cde
-.. _s2017-7:
-.. _s2017-7-The-Title:
+.. _s2017-99:
+.. _s2017-99-The-Title:
 
-2017-7 ... ((template for the next snippet))
-============================================
+2017-99 The Title ((template for the next snippet))
+===================================================
 
 by **Your Name**, 2017-mm-dd hh:mm:ss
 
