@@ -1,9 +1,9 @@
 
 .. include:: Includes.txt
 
-==============
-TYPO3 Snippets
-==============
+===============================
+TYPO3 Snippets, Tips and Howtos
+===============================
 
 :Rendered: |today|
 
@@ -11,6 +11,31 @@ TYPO3 Snippets
 .. figure:: files/2017-02-08-typo3-snippets.png
    :alt:    TYPO3 snippets
 
+What is a "Snippet"?
+====================
+
+Code snippets? Yes!
+-------------------
+As understood here a snippet is some kind of code extract with explanation
+that shows how to accomplish some kind of task. It doesn't have to stick to a
+special form. The existing snippets show give an impression of what is working
+well.
+
+A useful pointer to external information? Yes!
+----------------------------------------------
+**One important characteristic is:** It is the *personal* contribution of the
+author. That is: It is not "official" information. The TYPO3 documentation team
+doesn't check or judge whether the solution given works or is recommended.
+Instead, anybody in the community is invited to give feedback.
+
+Underlining the fact that snippets contain **personal** advice authors are
+explicitely invited to publish "snippets" that mainly serve as a pointer to an
+useful external source of knowledge like a blogpost.
+
+Your personal Howto? Yes, please!
+---------------------------------
+And, if you have some kind of **howto** that you have come across: Please
+publish those steps here as well.
 
 Please contribute
 =================
@@ -31,7 +56,8 @@ Please contribute
    and code passages in your contribution.
 
 #. You have collected a whole bunch of snippets and would like to have them
-   added? Get in contact with the `TYPO3 documentation team! <documentation@typo3.org>`__
+   added? Get in contact with the `TYPO3 documentation team!
+   <documentation@typo3.org>`__
 
 The Snippets
 ============
