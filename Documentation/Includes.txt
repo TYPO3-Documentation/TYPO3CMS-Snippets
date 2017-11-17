@@ -12,3 +12,9 @@
 
 .. default-role:: code
 .. highlight:: php
+
+
+.. Place common links here:
+   ========================
+
+.. _TYPO3: https://typo3.org/

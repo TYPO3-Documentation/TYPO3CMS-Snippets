@@ -440,6 +440,44 @@ Find the blogpost
    https://typo3worx.eu/2017/07/signals-and-slots-in-typo3/
 
 
+.. index::
+   :pair: exception_handler; Whoops
+
+.. _s2017-8:
+.. _s2017-8-How-to-use-Whoops:
+
+2017-8 How to use Whoops as exception handler for TYPO3
+=======================================================
+
+by **Daniel Siepmann**, 2017-11-17
+
+.. _Whoops: http://filp.github.io/whoops/
+
+Keywords:
+   blogpost, exception, handler
+
+Problem:
+   During development for TYPO3_ you often run into exceptions. They do not
+   look very nice. A much nicer alternative might be Whoops_. Whoops_ will not
+   only handle exceptions but also PHP errors like syntax errors.
+
+About Whoops:
+   What is it?
+
+      whoops is a nice little library that helps you develop and
+      maintain your projects better, by helping you deal with errors
+      and exceptions in a less painful way.
+
+Solution:
+   Follow the steps of this
+   `blogpost <https://daniel-siepmann.de/Posts/2017/2017-11-17-typo3-whoops-exception-handler.html>`__
+   and use Whoops_ with TYPO3_.
+
+Credits:
+   Thank you @dk2kde for telling me about Whoops_!
+
+
+
 
 .. index:: abc, bcd, cde
 .. _s2017-99:
@@ -469,4 +507,17 @@ so:
 
 on:
    ...
+
+
+
+
+
+
+
+
+
+
+
+
+
 
