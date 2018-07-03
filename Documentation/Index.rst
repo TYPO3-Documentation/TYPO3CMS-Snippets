@@ -8,9 +8,6 @@ TYPO3 Snippets, Tips and Howtos
 :Rendered: |today|
 
 
-.. figure:: files/2017-02-08-typo3-snippets.png
-   :alt:    TYPO3 snippets
-
 What is a "Snippet"?
 ====================
 
