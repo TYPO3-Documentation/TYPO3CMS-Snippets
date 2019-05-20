@@ -1,0 +1,9 @@
+{
+    "name": "typo3/docs-snippets",
+    "type": "typo3-cms-documentation",
+    "description": "A collection of snippets",
+    "license": "OPL-1.0",
+    "require": {
+      "typo3/cms-core": "^9.5"
+    }
+}
