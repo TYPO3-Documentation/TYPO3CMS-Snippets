@@ -795,6 +795,10 @@ Description:
    in order to avoid duplicate content caused by realURL at multiple language
    sites, add TS below and reference them in additionalHeaderData object.
 
+.. note::
+   Since TYPO3 v9 the canonical tag will be automatically generated if the 
+   system extension `seo` is installed.
+
 Code:
    .. code-block:: typoscript
 

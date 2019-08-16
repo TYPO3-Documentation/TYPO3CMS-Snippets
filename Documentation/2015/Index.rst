@@ -198,7 +198,7 @@ Code:
    .. code-block:: php
 
       <?php
-      namespace TYPO3\CMS\Fluid\ViewHelpers\Link;
+      namespace \ViewHelpers\Link;
 
       /*                                                                        *
        * This script is part of the TYPO3 project - inspiring people to share!  *
@@ -232,7 +232,7 @@ Code:
        * <a href="tel:+49 123 456 7890">some custom content</a>
        * </output>
        */
-      class PhoneViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
+      class PhoneViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractTagBasedViewHelper {
 
          /**
           * @var string

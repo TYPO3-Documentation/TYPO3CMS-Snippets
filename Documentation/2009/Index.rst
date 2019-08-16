@@ -205,6 +205,9 @@ Code:
 
 by **Nikolas Hagelstein (pulponair)**, 2009-12-14 15:04:27, old #227, php
 
+.. warning::
+   The following code will not work in newer TYPO3 versions (>= TYPO3 9). 
+
 Code:
    .. code-block:: php
 
@@ -645,6 +648,10 @@ Code:
 =====================================
 
 by **Steffen Müller**, 2009-04-01 17:51:59, old #216, php
+
+.. warning:: 
+   `filelink` is deprecated since version 9 and will be removed in version 10. 
+   Use DataProcessors or Fluid Styled Content instead.
 
 Keywords:
    cObj, filelink, TypoScript, extension, FE

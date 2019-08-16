@@ -968,6 +968,10 @@ Code:
 
 by **Martin Holtz**, 2008-07-07 09:32:43, old #26, typoscript
 
+.. warning:: 
+   `fileList` is deprecated since version 9 and will be removed in version 10. 
+   Use DataProcessors or Fluid Styled Content instead.
+
 Keywords:
    DAM, typoscript, IMAGE, cObject
 
