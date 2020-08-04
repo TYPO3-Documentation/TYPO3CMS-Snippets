@@ -18,3 +18,18 @@
    ========================
 
 .. _TYPO3: https://typo3.org/
+
+
+.. ---------------------------------------------------------------------
+.. Add content below, which should be displayed at the top of EVERY page.
+.. ---------------------------------------------------------------------
+
+.. warning::
+
+   This manual is no longer being maintained, updated or
+   reviewed. The examples may be outdated for latest
+   TYPO3 versions. However, you
+   may still find information here, that is useful. Use
+   at your own risk!
+
+   * `Documentation changelog: "Snippets" <https://docs.typo3.org/Home/About/News/2020/Index.html#snippets>`__ (August 4, 2020)

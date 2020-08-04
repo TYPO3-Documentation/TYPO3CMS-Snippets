@@ -5,11 +5,6 @@
 2017
 ===============
 
-.. rst-class:: horizbuttons-tip-xxl
-
-- Please contribute!
-
-
 
 .. index:: TypoScript; extract
 .. _s2017-1:
@@ -475,49 +470,6 @@ Solution:
 
 Credits:
    Thank you @dk2kde for telling me about Whoops_!
-
-
-
-
-.. index:: abc, bcd, cde
-.. _s2017-99:
-.. _s2017-99-The-Title:
-
-2017-99 The Title ((template for the next snippet))
-===================================================
-
-by **Your Name**, 2017-mm-dd hh:mm:ss
-
-Keywords:
-   abc, bcd, cde
-
-.. highlight:: php
-
-Abc:
-   ...
-
-Bcd:
-   ...
-
-and:
-   ...
-
-so:
-   ...
-
-on:
-   ...
-
-
-
-
-
-
-
-
-
-
-
 
 
 
